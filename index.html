@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <textarea id="ZonedeText"></textarea>
+    <br>
+    <button id="Bouton1" onclick="afficherTexte()">Bouton</button>
+
+    <script>
+        function afficherTexte() {
+            var texte = document.getElementById('ZonedeText').value;
+            
+            document.getElementById('Bouton1').innerHTML = texte;
+            
+            document.getElementById('ZonedeText').value = '';
+        }
+    </script>
+    
+</body>
+</html>
