@@ -59,12 +59,12 @@
 
     <script>
       function validerFormulaire() {
-        var nom = document.getElementById('nom-field').value;
-        var prenom = document.getElementById('prenom').value;
-        var email = document.getElementById('mail-field').value;
-        var speudo = document.getElementById('speudo-field').value;
-        var passe1 = document.getElementById('passe1-field').value;
-        var passe2 = document.getElementById('passe2-field').value;
+        var nom = document.getElementById('nom-field').value.trim();
+        var prenom = document.getElementById('prenom').value.trim();
+        var email = document.getElementById('mail-field').value.trim();
+        var speudo = document.getElementById('speudo-field').value.trim();
+        var passe1 = document.getElementById('passe1-field').value.trim();
+        var passe2 = document.getElementById('passe2-field').value.trim();
 
         if (nom === '' || prenom === '' || email === '' || speudo === '' || passe1 === '' || passe2 === '') {
           alert("Tous les champs doivent être remplis !");
@@ -76,10 +76,17 @@
           alert("Veuillez entrer une adresse e-mail valide !");
           return false;
         }
+        var rgx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[&#($_)!]).+$/;
+
         if (passe1 !== passe2) {
-          alert("Les mots de passe ne correspondent pas !");
-          return false;
-        }
+        alert("Les mots de passe ne correspondent pas !");
+        return false;
+    }
+
+        if (!rgx.test(passe1)) {
+        alert("Le mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule, un chiffre et un caractère spécial (&, #, $, _, (, ) ou !).");
+        return false;
+    }
 
         alert("Formulaire validé !");
         return true;
